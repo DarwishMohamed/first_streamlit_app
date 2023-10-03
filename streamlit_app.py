@@ -1,4 +1,5 @@
 import streamlit 
+streamlit = st
 
 streamlit.title("My Parents New Healthy Diner")
 
