@@ -76,6 +76,16 @@ fruits_to_add = ["jackfruit", "papaya", "guava", "kiwi"]
 for fruit in fruits_to_add:
     insert_row_snowflake(fruit)
 
+def remove_rows_snowflake(fruit_name):
+    with my_cnx.cursor() as my_cur:
+        my_cur.execute("DELETE FROM fruit_load_list WHERE FRUIT_NAME = %s", (fruit_name,))
+
+# Remove test and from streamlit entries
+remove_rows_snowflake('test')
+remove_rows_snowflake('from streamlit')
+
+
+
 # add a button to load the fruit
 if streamlit.button('Get Fruit List'):
     my_cnv = snowflake.connector.connect(**streamlit.secrets["snowflake"])
